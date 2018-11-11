@@ -1,0 +1,7 @@
+alembic
+flask
+flask-apispec
+flask-cors
+flask-jwt-extended
+flask-sqlalchemy
+raven[flask]

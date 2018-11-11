@@ -1,0 +1,5 @@
+SQLAlchemy==1.2.14
+psycopg2-binary
+celery==4.2.1
+tenacity
+passlib[bcrypt]

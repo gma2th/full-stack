@@ -1,7 +1,13 @@
 FROM tiangolo/uwsgi-nginx-flask:python3.7
 
+COPY ./app /app
+WORKDIR /app/
+
+ENV PYTHONPATH=/app
+
 RUN pip install --upgrade pip
-RUN pip install flask flask-cors psycopg2-binary raven[flask] celery==4.2.1 passlib[bcrypt] flask-sqlalchemy SQLAlchemy==1.2.12 flask-apispec flask-jwt-extended alembic tenacity
+RUN pip install -r requirements/common.txt
+RUN pip install -r requirements/backend.txt
 
 # For development, Jupyter remote kernel, Hydrogen
 # Using inside the container:
@@ -9,9 +15,6 @@ RUN pip install flask flask-cors psycopg2-binary raven[flask] celery==4.2.1 pass
 ARG env=prod
 RUN bash -c "if [ $env == 'dev' ] ; then pip install jupyter ; fi"
 EXPOSE 8888
-
-COPY ./app /app
-WORKDIR /app/
 
 ENV STATIC_PATH /app/app/static
 ENV STATIC_INDEX 1

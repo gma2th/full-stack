@@ -1,7 +1,13 @@
 FROM python:3.7
 
+COPY ./app /app
+WORKDIR /app/
+
+ENV PYTHONPATH=/app
+
 RUN pip install --upgrade pip
-RUN pip install requests faker==0.8.4 pytest tenacity psycopg2-binary SQLAlchemy==1.2.12 passlib[bcrypt]
+RUN pip install -r requirements/common.txt
+RUN pip install -r requirements/backend.txt
 
 # For development, Jupyter remote kernel, Hydrogen
 # Using inside the container:
@@ -10,13 +16,7 @@ ARG env=prod
 RUN bash -c "if [ $env == 'dev' ] ; then pip install jupyter ; fi"
 EXPOSE 8888
 
-COPY ./app /app
-
-ENV PYTHONPATH=/app
-
-COPY ./app/tests-start.sh /tests-start.sh
-
-RUN chmod +x /tests-start.sh
+RUN chmod +x tests-start.sh
 
 # This will make the container wait, doing nothing, but alive
 CMD ["bash", "-c", "while true; do sleep 1; done"]
