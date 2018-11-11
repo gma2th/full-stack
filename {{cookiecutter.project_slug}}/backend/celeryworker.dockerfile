@@ -1,4 +1,4 @@
-FROM python:3.6
+FROM python:3.7
 
 RUN pip install psycopg2-binary raven pyyaml celery==4.2.1 SQLAlchemy==1.2.12 passlib[bcrypt] tenacity
 

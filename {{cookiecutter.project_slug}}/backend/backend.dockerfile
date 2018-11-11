@@ -1,4 +1,4 @@
-FROM tiangolo/uwsgi-nginx-flask:python3.6
+FROM tiangolo/uwsgi-nginx-flask:python3.7
 
 RUN pip install --upgrade pip
 RUN pip install flask flask-cors psycopg2-binary raven[flask] celery==4.2.1 passlib[bcrypt] flask-sqlalchemy SQLAlchemy==1.2.12 flask-apispec flask-jwt-extended alembic tenacity

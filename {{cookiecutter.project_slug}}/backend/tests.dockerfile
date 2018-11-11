@@ -1,4 +1,4 @@
-FROM python:3.6
+FROM python:3.7
 
 RUN pip install requests faker==0.8.4 pytest tenacity psycopg2-binary SQLAlchemy==1.2.12 passlib[bcrypt]
 
