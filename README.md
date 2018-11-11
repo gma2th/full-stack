@@ -38,7 +38,6 @@ Generate a backend and frontend stack using Python, including interactive API do
   * Docker multi-stage building, so you don't need to save or commit compiled code
   * Frontend tests ran at build time (can be disabled too)
   * Made as modular as possible, so it works out of the box, but you can re-generate with Vue CLI or create it as you need, and re-use what you want
-* PGAdmin for PostgreSQL database, you can modify it to use PHPMyAdmin and MySQL easily
 * Swagger-UI for live interactive documentation
 * Flower for Celery jobs monitoring
 * Load balancing between frontend and backend with Traefik, so you can have both under the same domain, separated by path, but served by different containers
@@ -86,8 +85,6 @@ The input variables, with their default values (some auto generated) are:
 * `backend_cors_origins`: Origins (domains, more or less) that are enabled for CORS (Cross Origin Resource Sharing). This allows a frontend in one domain (e.g. `https://dashboard.example.com`) to communicate with this backend, that could be living in another domain (e.g. `https://api.example.com`). It can also be used to allow your local frontend (with a custom `hosts` domain mapping, as described in the project's `README.md`) that could be living in `http://dev.example.com:8080` to cummunicate with the backend at `https://stag.example.com`. Notice the `http` vs `https` and the `dev.` prefix for local development vs the "staging" `stag.` prefix. By default, it includes origins for production, staging and development, with ports commonly used during local development by several popular frontend frameworks (Vue with `:8080`, React, Angular).
  
 * `postgres_password`: Postgres database password. Use the method above to generate it. (You could easily modify it to use MySQL, MariaDB, etc).
-* `pgadmin_default_user`: PGAdmin default user, to log-in to the PGAdmin interface.
-* `pgadmin_default_user_password`: PGAdmin default user password. Generate it with the method above.
  
 * `traefik_constraint_tag`: The tag to be used by the internal Traefik load balancer (for example, to divide requests between backend and frontend) for production. Used to separate this stack from any other stack you might have. This should identify each stack in each environment (production, staging, etc).
 * `traefik_constraint_tag_staging`: The Traefik tag to be used while on staging. 

@@ -25,8 +25,6 @@ Backend, JSON based web API, with Swagger automatic documentation: http://localh
 
 Swagger UI, frontend user interface to interact with the API live: http://localhost/swagger/
 
-PGAdmin, PostgreSQL web administration: http://localhost:5050
-
 Flower, administration of Celery tasks: http://localhost:5555
 
 Traefik UI, to see how the routes are being handled by the proxy: http://localhost:8090
@@ -605,7 +603,7 @@ The purpose of each Docker Compose file is:
 * `docker-compose.dev.networks.yml`: local development networks, to enable interactively talking to the backend.
 * `docker-compose.dev.ports.yml`: local development port mappings.
 * `docker-compose.dev.volumes.yml`: local development mounted volumes, mainly to map the development code directory inside the container, for fast development without needing to re-build the images.
-* `docker-compose.shared.admin.yml`: additional services for administration or utilities with their configurations, like PGAdmin and Swagger, that are not needed during testing and use external images (don't need to be built or create images).
+* `docker-compose.shared.admin.yml`: additional services for administration or utilities with their configurations, Swagger, that are not needed during testing and use external images (don't need to be built or create images).
 * `docker-compose.shared.base-images.yml`: base Docker images used without modification for shared services, as databases. Used in deployment, development, testing, etc.
 * `docker-compose.shared.depends.yml`: dependencies between main services with `depends_on`, used in deployment, development, testing, etc.
 * `docker-compose.shared.env.yml`: environment variables used by services, as database passwords, secret keys, etc.
@@ -625,8 +623,6 @@ Backend: https://{{cookiecutter.domain_main}}/api/
 
 Swagger UI: https://{{cookiecutter.domain_main}}/swagger/
 
-PGAdmin: https://pgadmin.{{cookiecutter.domain_main}}
-
 Flower: https://flower.{{cookiecutter.domain_main}}
 
 ### Staging
@@ -639,8 +635,6 @@ Backend: https://{{cookiecutter.domain_staging}}/api/
 
 Swagger UI: https://{{cookiecutter.domain_staging}}/swagger/
 
-PGAdmin: https://pgadmin.{{cookiecutter.domain_staging}}
-
 Flower: https://flower.{{cookiecutter.domain_staging}}
     
 ### Development
@@ -652,8 +646,6 @@ Frontend: http://localhost
 Backend: http://localhost/api/
 
 Swagger UI: http://localhost/swagger/
-
-PGAdmin: http://localhost:5050
 
 Flower: http://localhost:5555
 
@@ -668,8 +660,6 @@ Frontend: http://local.dockertoolbox.tiangolo.com
 Backend: http://local.dockertoolbox.tiangolo.com/api/
 
 Swagger UI: http://local.dockertoolbox.tiangolo.com/swagger/
-
-PGAdmin: http://local.dockertoolbox.tiangolo.com:5050
 
 Flower: http://local.dockertoolbox.tiangolo.com:5555
 
